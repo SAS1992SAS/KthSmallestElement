@@ -5,7 +5,8 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args) {
         int[] arr = generateRandomArray(55,1,100);
-        System.out.println(KthSmallestElement.select2(4, arr));
+        int[] arr2 = {1, 5, 7, 8, 2, 4, 12, 9};
+        System.out.println(KthSmallestElement.select2(5, arr2));
     }
 
 

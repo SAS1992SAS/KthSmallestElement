@@ -17,32 +17,28 @@ public class KthSmallestElement {
         int m = S[rand.nextInt(S.length)];
 
         //3 sequences from S
-        ArrayList<Integer> S1 = new ArrayList<Integer>();
-        ArrayList<Integer> S2 = new ArrayList<Integer>();
-        ArrayList<Integer> S3 = new ArrayList<Integer>();
+        ArrayList<Integer> S1 = new ArrayList<>();
+        ArrayList<Integer> S2 = new ArrayList<>();
+        ArrayList<Integer> S3 = new ArrayList<>();
 
-        int p = 0;
-        int q = 0;
-        int r = 0;
         System.out.println("m ="+m);
 
         for (int i = 0; i < S.length; i++) {
             //case1 where S[i] less than m
             if (S[i] < m) {
                 S1.add(S[i]);
-                p++;
+/*
                 System.out.println("S["+i+"]=" +S[i] + " p= "+p);
+*/
 
             //case2 where s[i] equal m
-            } else if (S[i] == m) {
+            }
+            else if (S[i] == m) {
                 S2.add(S[i]);
-                q++;
-                System.out.println("S["+i+"]=" +S[i] + " q= "+q);
             //case3 where s[i] bigger than m
-            } else {
+            }
+            else {
                 S3.add(S[i]);
-                r++;
-                System.out.println("S["+i+"]=" +S[i] + " r= "+r);
             }
         }
 
@@ -76,7 +72,6 @@ public class KthSmallestElement {
 
         int[] M = new int[S.length/5];
         System.out.println("size of M="+ M.length);
-        printArray(S);
         int j=0;
         for (int i=2; i< S.length-(S.length%5); i+=5){
             M[j] = S[i];
@@ -88,7 +83,35 @@ public class KthSmallestElement {
         System.out.println("value of m="+ m);
         printArray(M);
 
-        return 1;
+        //3 sequences from S
+        ArrayList<Integer> S1 = new ArrayList<>();
+        ArrayList<Integer> S2 = new ArrayList<>();
+        ArrayList<Integer> S3 = new ArrayList<>();
+
+
+
+        for (int i=0; i < S.length; i++){
+            if (S[i] < m){
+                S1.add(S[i]);
+
+            }
+            else if (S[i] == m) {
+                S2.add(S[i]);
+            }
+            else{
+               S3.add(S[i]);
+            }
+        }
+
+        if (S1.size() >= k){
+            return select2(k,toArray(S1));
+        }
+        else if (S1.size()+S2.size() >= k) {
+            return m;
+        }
+        else {
+            return select2(k-S1.size()-S2.size(), toArray(S3));
+        }
     }
 
 
